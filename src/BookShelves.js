@@ -11,7 +11,9 @@ class BookShelves extends Component {
 
 
   render() {
-    let showingBooks = this.props.booksOnShelves;
+    const showingBooks = this.props.booksOnShelves;
+    const updateBook = this.props.onUpdateBook;
+
     return (
       <div className="list-books">
         <div className="list-books-title">
@@ -29,7 +31,10 @@ class BookShelves extends Component {
                       <div className="book-top">
                         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
                         <div className="book-shelf-changer">
-                          <select defaultValue="currentlyReading">
+                          <select
+                            onChange={(event) => updateBook(book, event.target.value)}
+                            defaultValue={book.shelf || 'none'}
+                            >
                             <option value="move" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
                             <option value="wantToRead">Want to Read</option>
@@ -55,7 +60,10 @@ class BookShelves extends Component {
                       <div className="book-top">
                         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
                         <div className="book-shelf-changer">
-                          <select defaultValue="wantToRead">
+                        <select
+                          onChange={(event) => updateBook(book, event.target.value)}
+                          defaultValue={book.shelf || 'none'}
+                          >
                             <option value="move" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
                             <option value="wantToRead">Want to Read</option>
@@ -81,7 +89,10 @@ class BookShelves extends Component {
                       <div className="book-top">
                         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
                         <div className="book-shelf-changer">
-                          <select defaultValue="read">
+                        <select
+                          onChange={(event) => updateBook(book, event.target.value)}
+                          defaultValue={book.shelf || 'none'}
+                          >
                             <option value="move" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
                             <option value="wantToRead">Want to Read</option>
