@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 
-class BooksShelves extends Component {
+class BooksShelfs extends Component {
 
   // TODO fill proptypes
   //   static propTypes = {
@@ -172,4 +172,4 @@ class BooksShelves extends Component {
   }
 }
 
-export default BooksShelves;
+export default BooksShelfs;

@@ -1,7 +1,7 @@
 import React from 'react'
 // import * as BooksAPI from './BooksAPI'
 import './App.css'
-import BooksShelves from './BooksShelves'
+import BooksShelfs from './BooksShelfs'
 import SearchBooks from './SearchBooks'
 
 class BooksApp extends React.Component {
@@ -22,7 +22,7 @@ class BooksApp extends React.Component {
           <SearchBooks />
         ) : (
           <div>
-            <BooksShelves s={this.state.showSearchPage}/>
+            <BooksShelfs s={this.state.showSearchPage}/>
             <div className="open-search">
               <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
             </div>
