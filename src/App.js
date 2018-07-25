@@ -17,17 +17,19 @@ class BooksApp extends React.Component {
     showSearchPage: false
   }
 
-
+ //Get all the books with BooksAPI and set the state with fetched books
   getBooks = () => {
     BooksAPI.getAll().then((books) => {
       this.setState({ booksOnShelves: books });
     })
   }
 
+  //Get books when component mounts
   componentDidMount() {
     this.getBooks();
   }
 
+  //Update book's shelf, get updated books (and set state)
   updateBook = (book, shelf) => {
     BooksAPI.update(book, shelf).then(() => {this.getBooks()});
   }
