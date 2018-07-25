@@ -172,4 +172,4 @@ class BooksShelves extends Component {
   }
 }
 
-export default BooksShelves
+export default BooksShelves;
