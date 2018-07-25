@@ -3,9 +3,11 @@ import React from 'react'
 import './App.css'
 import BooksShelfs from './BooksShelfs'
 import SearchBooks from './SearchBooks'
+import * as BooksAPI from './BooksAPI'
 
 class BooksApp extends React.Component {
   state = {
+    BooksOnShelfs: [],
     /**
      * TODO: Instead of using this state variable to keep track of which page
      * we're on, use the URL in the browser's address bar. This will ensure that
@@ -13,6 +15,12 @@ class BooksApp extends React.Component {
      * pages, as well as provide a good URL they can bookmark and share.
      */
     showSearchPage: false
+  }
+
+  componentDidMount() {
+    BooksAPI.getAll().then((books) => {
+      this.setState({ BooksOnShelfs: books })
+    })
   }
 
   render() {
