@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import bookPlaceHolder from './icons/book-placeholder.svg';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class SearchBooks extends Component {
 
@@ -14,7 +15,7 @@ class SearchBooks extends Component {
     return (
       <div className="search-books">
         <div className="search-books-bar">
-          <a className="close-search" onClick={() => window.location.href = './'}>Close</a>
+            <Link to="/" className='close-search'>Close</Link>
           <div className="search-books-input-wrapper">
             <input
               type="text"
