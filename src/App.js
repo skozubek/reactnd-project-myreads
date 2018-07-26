@@ -39,25 +39,31 @@ class BooksApp extends React.Component {
   //Functions for search feature
   updateQuery = (query) => {
     BooksAPI.search(query).then((books) => {
+      this.checkShelves(books);
       this.setState({query: query, booksFound: books})
-      this.checkShelves();
-    })
 
+    })
   }
 
   clearQuery = () => {
     this.setState({booksFound: [], query: ''});
   }
 
-  checkShelves = () => {
-    const searchResultsIds = this.state.booksFound.map(book => book.id);
-    const booksOnShelvesIds = this.state.booksOnShelves.map(book => book.id);
+  //FUpdates search results drop downs when item present on Book shelf already
+  checkShelves = (finds) => {
+    let ResultsIds = finds.map(book => book.id);
+    let ShelvesIds = this.state.booksOnShelves.map(book => book.id);
 
-    const commons = searchResultsIds.filter(id => booksOnShelvesIds.includes(id));
+    let commons = ResultsIds.filter(id => ShelvesIds.includes(id));
+    let shelves = this.state.booksOnShelves;
+
     commons.forEach(el => {
-      console.log(el));
-      indexFound = searchResultsIds.findIndex((book) => book)
-      }
+      let idFound = finds.findIndex(item => item.id === el);
+      let idShelf = shelves.findIndex(item => item.id === el);
+
+      finds[idFound].shelf = shelves[idShelf].shelf;
+
+    });
   }
 
   render() {

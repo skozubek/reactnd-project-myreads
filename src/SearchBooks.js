@@ -6,7 +6,6 @@ class SearchBooks extends Component {
   render() {
     const searchResults = this.props.searchResults;
     const booksOnShelves = this.props.booksOnShelves;
-    
 
     return (
       <div className="search-books">
@@ -22,9 +21,7 @@ class SearchBooks extends Component {
                   this.props.onQueryUpdate(event.target.value);
                 } else{
                   this.props.onEmptyQuery(event.target.value);
-                }
-              }
-            }
+                }}}
             />
           </div>
         </div>
@@ -39,7 +36,7 @@ class SearchBooks extends Component {
                   <div className="book-shelf-changer">
                   <select
                     onChange={(event) => this.props.onUpdateBook(book, event.target.value)}
-                    defaultValue="none"
+                    defaultValue={book.shelf || "none"}
                     >
                       <option value="move" disabled>{book.imagelinks}Move to...</option>
                       <option value="currentlyReading">Currently Reading</option>
