@@ -4,7 +4,7 @@ This is the project for Udacity's React FEND course. A simple app that allows ma
 
 ## Start the app
 
-To start the application fork, clone the Project and then:
+To start the application fork, clone the Project and then cd into directory containing project and:
 
 * install all project dependencies with `npm install`
 * start the server with `npm start`
