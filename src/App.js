@@ -51,20 +51,23 @@ class BooksApp extends React.Component {
   //Updates search results drop downs when item present on Book shelf already
   checkShelves = (finds) => {
     //lets get just IDs
-    let ResultsIds = finds.map(book => book.id);
-    let ShelvesIds = this.state.booksOnShelves.map(book => book.id);
-    //What are comon ides in both: search results and books on shelves
-    let commons = ResultsIds.filter(id => ShelvesIds.includes(id));
+    if(finds && finds.length > 0){
+      let ResultsIds = finds.map(book => book.id);
+      let ShelvesIds = this.state.booksOnShelves.map(book => book.id);
+      //What are comon ides in both: search results and books on shelves
+      let commons = ResultsIds.filter(id => ShelvesIds.includes(id));
 
-    let shelves = this.state.booksOnShelves;
+      let shelves = this.state.booksOnShelves;
 
-    //For each common id, let's find correct index in both: search results and books on shelves
-    commons.forEach(el => {
-      let indFound = finds.findIndex(item => item.id === el);
-      let indShelf = shelves.findIndex(item => item.id === el);
-      //Update the book in search results with shelf of the book currently on shelf
-      finds[indFound].shelf = shelves[indShelf].shelf;
-    });
+      //For each common id, let's find correct index in both: search results and books on shelves
+      commons.forEach(el => {
+        let indFound = finds.findIndex(item => item.id === el);
+        let indShelf = shelves.findIndex(item => item.id === el);
+        //Update the book in search results with shelf of the book currently on shelf
+        finds[indFound].shelf = shelves[indShelf].shelf;
+      });
+    }
+
   }
 
   render() {
