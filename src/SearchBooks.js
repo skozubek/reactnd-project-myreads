@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import bookPlaceHolder from './icons/book-placeholder.svg';
+import PropTypes from 'prop-types';
 
 class SearchBooks extends Component {
 
+  static propTypes = {
+    searchResults: PropTypes.array
+  }
+
   render() {
     const searchResults = this.props.searchResults;
-    const booksOnShelves = this.props.booksOnShelves;
 
     return (
       <div className="search-books">
@@ -17,11 +21,9 @@ class SearchBooks extends Component {
               placeholder="Search by title or author"
               value={this.props.searchQuery}
               onChange={(event) => {
-                if(event.target.value !== ''){
-                  this.props.onQueryUpdate(event.target.value);
-                } else{
-                  this.props.onEmptyQuery(event.target.value);
-                }}}
+                (event.target.value !== '') ? this.props.onQueryUpdate(event.target.value) : this.props.onEmptyQuery(event.target.value)
+                }
+              }
             />
           </div>
         </div>
@@ -38,7 +40,7 @@ class SearchBooks extends Component {
                     onChange={(event) => this.props.onUpdateBook(book, event.target.value)}
                     defaultValue={book.shelf || "none"}
                     >
-                      <option value="move" disabled>{book.imagelinks}Move to...</option>
+                      <option value="move" disabled>Move to...</option>
                       <option value="currentlyReading">Currently Reading</option>
                       <option value="wantToRead">Want to Read</option>
                       <option value="read">Read</option>

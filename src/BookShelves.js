@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 class BookShelves extends Component {
 
-  // TODO fill proptypes
-  //   static propTypes = {
-  //   books: PropTypes.array.isRequired,
-  //   onDeleteContact: PropTypes.func.isRequired
-  // }
+static propTypes = {
+  showingBooks: PropTypes.array,
+  updateBook: PropTypes.func
+}
+
   render() {
     const showingBooks = this.props.booksOnShelves;
     const updateBook = this.props.onUpdateBook;
@@ -83,7 +83,7 @@ class BookShelves extends Component {
                   <li key={ book.id }>
                     <div className="book">
                       <div className="book-top">
-                        <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(http:// book.imageLinks.thumbnail})` }}></div>
+                        <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
                         <div className="book-shelf-changer">
                         <select
                           onChange={(event) => updateBook(book, event.target.value)}
