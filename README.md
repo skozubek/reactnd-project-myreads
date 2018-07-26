@@ -2,7 +2,7 @@
 
 This is the project for Udacity's React FEND course. A simple app that allows manage your reads.
 
-## TL;DR
+## Start the app
 
 To start the application fork, clone the Project and then:
 
@@ -11,7 +11,7 @@ To start the application fork, clone the Project and then:
 
 ## Backend Server
 
-App works with provided backend server for you use. The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods necessary for operations on the backend:
+App works with provided backend server for you to use. The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods necessary for operations on the backend:
 
 * [`getAll`](#getall)
 * [`update`](#update)
