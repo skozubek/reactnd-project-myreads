@@ -68,32 +68,31 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-      <Route exact path = "/search" render = {() => (
-          <SearchBooks
-          booksOnShelves={this.state.booksOnShelves}
-          searchResults={this.state.booksFound}
-          searchQuery={this.state.query}
-          onQueryUpdate={this.updateQuery}
-          onEmptyQuery={this.clearQuery}
-          onUpdateBook={this.updateBook}
-          />
-        )}
-      />
-
-          <Route exact path = "/" render = {() => (
-            <div>
-              <BookShelves
-                booksOnShelves={this.state.booksOnShelves}
-                onUpdateBook={this.updateBook}
-                />
-              <div className="open-search">
-                <Link to="/search">Add a book</Link>
-              </div>
+        <Route exact path = "/search" render = {() => (
+            <SearchBooks
+            booksOnShelves={this.state.booksOnShelves}
+            searchResults={this.state.booksFound}
+            searchQuery={this.state.query}
+            onQueryUpdate={this.updateQuery}
+            onEmptyQuery={this.clearQuery}
+            onUpdateBook={this.updateBook}
+            />
+          )}
+        />
+        <Route exact path = "/" render = {() => (
+          <div>
+            <BookShelves
+              booksOnShelves={this.state.booksOnShelves}
+              onUpdateBook={this.updateBook}
+              />
+            <div className="open-search">
+              <Link to="/search">Add a book</Link>
             </div>
-            )}/>
+          </div>
+          )}/>
         </div>
-      )}
-  }
-
+      )
+    }
+}
 
 export default BooksApp;
