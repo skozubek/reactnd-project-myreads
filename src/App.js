@@ -8,6 +8,8 @@ import * as BooksAPI from './BooksAPI'
 class BooksApp extends React.Component {
   state = {
     booksOnShelves: [],
+    booksFound: [],
+    query: '',
     /**
      * TODO: Instead of using this state variable to keep track of which page
      * we're on, use the URL in the browser's address bar. This will ensure that
@@ -34,15 +36,46 @@ class BooksApp extends React.Component {
     BooksAPI.update(book, shelf).then(() => {this.getBooks()});
   }
 
+  //Functions for search feature
+  updateQuery = (query) => {
+    BooksAPI.search(query).then((books) => {
+      this.setState({query: query, booksFound: books})
+      this.checkShelves();
+    })
+
+  }
+
+  clearQuery = () => {
+    this.setState({booksFound: [], query: ''});
+  }
+
+  checkShelves = () => {
+    const searchResultsIds = this.state.booksFound.map(book => book.id);
+    const booksOnShelvesIds = this.state.booksOnShelves.map(book => book.id);
+
+    const commons = searchResultsIds.filter(id => booksOnShelvesIds.includes(id));
+    commons.forEach(el => {
+      console.log(el));
+      indexFound = searchResultsIds.findIndex((book) => book)
+      }
+  }
+
   render() {
     return (
       <div className="app">
         {this.state.showSearchPage ? (
-          <SearchBooks />
+          <SearchBooks
+          booksOnShelves={this.state.booksOnShelves}
+          searchResults={this.state.booksFound}
+          searchQuery={this.state.query}
+          onQueryUpdate={this.updateQuery}
+          onEmptyQuery={this.clearQuery}
+          onUpdateBook={this.updateBook}
+          />
         ) : (
           <div>
             <BookShelves
-              booksOnShelves={ this.state.booksOnShelves } s={ this.state.showSearchPage }
+              booksOnShelves={this.state.booksOnShelves} s={this.state.showSearchPage}
               onUpdateBook={this.updateBook}
               />
             <div className="open-search">

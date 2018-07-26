@@ -8,8 +8,6 @@ class BookShelves extends Component {
   //   books: PropTypes.array.isRequired,
   //   onDeleteContact: PropTypes.func.isRequired
   // }
-
-
   render() {
     const showingBooks = this.props.booksOnShelves;
     const updateBook = this.props.onUpdateBook;
@@ -33,7 +31,7 @@ class BookShelves extends Component {
                         <div className="book-shelf-changer">
                           <select
                             onChange={(event) => updateBook(book, event.target.value)}
-                            defaultValue={book.shelf || 'none'}
+                            defaultValue={book.shelf }
                             >
                             <option value="move" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
@@ -48,7 +46,6 @@ class BookShelves extends Component {
                     </div>
                   </li>
                 ))}
-
                 </ol>
               </div>
               <h2 className="bookshelf-title">Want to Read</h2>
@@ -62,7 +59,7 @@ class BookShelves extends Component {
                         <div className="book-shelf-changer">
                         <select
                           onChange={(event) => updateBook(book, event.target.value)}
-                          defaultValue={book.shelf || 'none'}
+                          defaultValue={book.shelf}
                           >
                             <option value="move" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
@@ -77,7 +74,6 @@ class BookShelves extends Component {
                     </div>
                   </li>
                 ))}
-
                 </ol>
               </div>
               <h2 className="bookshelf-title">Read</h2>
@@ -87,11 +83,11 @@ class BookShelves extends Component {
                   <li key={ book.id }>
                     <div className="book">
                       <div className="book-top">
-                        <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
+                        <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(http:// book.imageLinks.thumbnail})` }}></div>
                         <div className="book-shelf-changer">
                         <select
                           onChange={(event) => updateBook(book, event.target.value)}
-                          defaultValue={book.shelf || 'none'}
+                          defaultValue={book.shelf}
                           >
                             <option value="move" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
@@ -106,7 +102,6 @@ class BookShelves extends Component {
                     </div>
                   </li>
                 ))}
-
                 </ol>
               </div>
             </div>
