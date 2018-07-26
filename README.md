@@ -1,4 +1,4 @@
-# MyReads Project
+# MyReads FEND Project
 
 This is the project for Udacity's React FEND course. A simple app that allows manage your reads.
 
